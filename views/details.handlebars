@@ -1,9 +1,28 @@
-<h1>{{user.first_name}} {{user.last_name}} [ID:{{user.id}}]</h1>
-<ul class="list-group">
-<li class="list-group-item"><strong>Email: </strong>{{user.email}}</li>
-<li class="list-group-item"><strong>Phone: </strong>{{user.phone}}</li>
-</ul>
-<a class="btn btn-dark float-left" href="/">Back</a>
+<h1><strong>User ID:</strong> {{user.id}}</h1>
+</br>
+{{#if error}} <span>{{error}}</span>{{/if}}
+<form method="POST" action="/user/edit/{{user.id}}?_method=PUT"> 
+<div class="form-group">
+    <label>First Name</label>
+    <input type="text" name="first_name" class="form-control" value="{{user.first_name}}">  
+</div>
+<div class="form-group">
+    <label>Last Name</label>
+    <input type="text" name="last_name" class="form-control" value="{{user.last_name}}">
+</div>
+<div class="form-group">
+    <label>Email</label>
+    <input type="text" name="email" class="form-control" value="{{user.email}}">
+</div>
+<div class="form-group">
+    <label>Phone</label>
+    <input type="text" name="phone" class="form-control" value="{{user.phone}}"> 
+</div>
+<div class="row">
+<a class="btn btn-dark" style="margin: 5px;" href="/">Back</a>
 <form method="POST" action="/user/delete/{{user.id}}?_method=DELETE">
-<input type="submit" class="btn btn-danger float-right" value="Delete">
+<input type="submit" class="btn btn-danger" style="margin: 5px;" value="Delete">
+</form>
+<input type="submit" class="btn btn-success" style="margin: 5px;" value="Save">
+</div>
 </form>
